@@ -52,6 +52,38 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    @Override
+    public void update(User user) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement(
+                    "UPDATE users SET username = ?, email = ? WHERE id = ?"
+            );
+
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setLong(3, user.getId());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating user.", e);
+        }
+    }
+
+    @Override
+    public void delete(User user) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement(
+                    "DELETE FROM users WHERE id = ?"
+            );
+
+            stmt.setLong(1, user.getId());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting user.", e);
+        }
+    }
+
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
