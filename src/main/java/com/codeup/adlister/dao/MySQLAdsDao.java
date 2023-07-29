@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
@@ -52,6 +53,54 @@ public class MySQLAdsDao implements Ads {
             return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
+        }
+    }
+
+    @Override
+    public void update(Ad ad) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement(
+                    "UPDATE ads SET title = ?, description = ? WHERE id = ?"
+            );
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating ad.", e);
+        }
+    }
+
+    @Override
+    public Ad find(Long id) {
+        String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return extractAd(rs);
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding an ad.", e);
+        }
+    }
+
+    @Override
+    public List<Ad> getAdsByUserId(Long userId) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT * FROM ads WHERE user_id = ?"
+            );
+            stmt.setLong(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving user's ads.", e);
         }
     }
 
