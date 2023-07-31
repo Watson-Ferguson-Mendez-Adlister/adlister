@@ -18,6 +18,12 @@ import static java.lang.System.out;
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        if(DaoFactory.getUsersDao().findByUsername(username) == null){
+            request.setAttribute("valid", true);
+        } else {
+            request.setAttribute("valid", false);
+        }
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
