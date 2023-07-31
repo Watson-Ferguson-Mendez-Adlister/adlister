@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
+import org.apache.taglibs.standard.tag.common.core.UrlSupport;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
@@ -34,9 +35,14 @@ public class LoginServlet extends HttpServlet {
 
         boolean validAttempt = Password.check(password, user.getPassword());
 
-        if (validAttempt) {
+        if (validAttempt && (request.getSession().getAttribute("previousUrl") != null)) {
+            request.getSession().setAttribute("user", user);
+            String previous = request.getSession().getAttribute("previousUrl").toString();
+            response.sendRedirect(previous);
+        } else if (validAttempt) {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
+
         } else {
             response.sendRedirect("/login");
         }
