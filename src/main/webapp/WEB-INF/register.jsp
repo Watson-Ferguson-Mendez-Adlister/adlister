@@ -16,10 +16,6 @@
                 <form action="/register" method="get">
                     <button>Check Username</button>
                 </form>
-                <%if(request.getAttribute("valid").equals(true)){
-
-                }
-                %>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
