@@ -18,18 +18,26 @@ import static java.lang.System.out;
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("prevUsername") == null) {
+            request.getSession().setAttribute("prevUsername", "");
+            request.getSession().setAttribute("prevEmail", "");
+            request.getSession().setAttribute("prevPassword", "");
+        }
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
+        request.getSession().setAttribute("prevUsername", username);
         String email = request.getParameter("email");
+        request.getSession().setAttribute("prevEmail", email);
         String password = request.getParameter("password");
+        request.getSession().setAttribute("prevPassword", password);
         String passwordConfirmation = request.getParameter("confirm_password");
 
         // validate input
-        boolean inputHasErrors = username.isEmpty()
-                || email.isEmpty()
+        boolean inputHasErrors = username.isEmpty() || DaoFactory.getUsersDao().findByUsername(username) != null
+                || email.isEmpty() || DaoFactory.getUsersDao().findByEmail(email) != null
                 || password.isEmpty()
                 || (!password.equals(passwordConfirmation));
 
@@ -37,7 +45,6 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("/register");
             return;
         }
-
         // create and save a new user
         User user = new User(username, email, password);
 
@@ -47,6 +54,8 @@ public class RegisterServlet extends HttpServlet {
 
         user.setPassword(hash);
         DaoFactory.getUsersDao().insert(user);
+
         response.sendRedirect("/login");
+
     }
 }
