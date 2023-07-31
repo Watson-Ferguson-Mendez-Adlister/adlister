@@ -13,9 +13,6 @@
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
-                <form action="/register" method="get">
-                    <button>Check Username</button>
-                </form>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
