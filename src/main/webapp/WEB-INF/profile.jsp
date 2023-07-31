@@ -14,7 +14,7 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
         <h1 class="py-3">Your Ads</h1>
         <c:forEach var="ad" items="${ads}">
-            <div class="card" style="width: 18rem;">
+            <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">${ad.title}</h5>
                     <p class="card-text">${ad.description}</p>
