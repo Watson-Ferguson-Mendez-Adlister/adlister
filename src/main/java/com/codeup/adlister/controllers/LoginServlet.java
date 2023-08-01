@@ -20,31 +20,44 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
             return;
         }
+        if(request.getSession().getAttribute("prevUser") == null){
+            request.getSession().setAttribute("prevUser", "");
+        }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
+        request.getSession().setAttribute("prevUser", username);
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
+        boolean validAttempt = false;
+
+        if(user != null){
+            validAttempt = Password.check(password, user.getPassword());
+        }
+
+        //Error Messages
 
         if (user == null) {
-            response.sendRedirect("/login");
+            request.setAttribute("loginError", "Invalid username or password.");
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            return;
+        } else if(!validAttempt){
+            request.setAttribute("loginError", "Invalid username or password.");
+            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
 
-        boolean validAttempt = Password.check(password, user.getPassword());
+        //Intended Redirects
 
-        if (validAttempt && (request.getSession().getAttribute("previousUrl") != null)) {
+        if (request.getSession().getAttribute("previousUrl") != null) {
             request.getSession().setAttribute("user", user);
             String previous = request.getSession().getAttribute("previousUrl").toString();
             response.sendRedirect(previous);
-        } else if (validAttempt) {
+        } else {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
-
-        } else {
-            response.sendRedirect("/login");
         }
     }
 }
