@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect(previous);
         } else {
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/profile");
+            response.sendRedirect("/index");
         }
     }
 }
