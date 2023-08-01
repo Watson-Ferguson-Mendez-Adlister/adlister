@@ -70,10 +70,8 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Ad find(Long id) {
-        String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
-
         try {
-            PreparedStatement stmt = connection.prepareStatement(query);
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = ? LIMIT 1");
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
 
@@ -122,6 +120,20 @@ public class MySQLAdsDao implements Ads {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error deleting ads by user id.", e);
+        }
+    }
+
+    @Override
+    public List<Ad> search(String term) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?");
+            stmt.setString(1, "%" + term + "%");
+            stmt.setString(2, "%" + term + "%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving search results.", e);
         }
     }
 

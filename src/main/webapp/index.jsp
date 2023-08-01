@@ -11,5 +11,8 @@
     <div class="container">
         <h1>Welcome to the Adlister!</h1>
     </div>
+    <form action="${pageContext.request.contextPath}/search" method="GET" class="text-center pt-3">
+        <input type="text" name="query" placeholder="Search for ads" class="search-bar">
+    </form>
 </body>
 </html>
