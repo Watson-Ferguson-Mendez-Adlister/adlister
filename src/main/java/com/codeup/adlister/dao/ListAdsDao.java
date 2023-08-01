@@ -34,11 +34,6 @@ public class ListAdsDao implements Ads {
 
     @Override
     public Ad find(Long id) {
-        for (Ad ad : ads) {
-            if (ad.getId() == id) {
-                return ad;
-            }
-        }
         return null;
     }
 

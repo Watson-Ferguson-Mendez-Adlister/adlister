@@ -19,6 +19,7 @@
 <div class="container">
     <h1 class="pt-5">${ad.title}</h1>
     <p>${ad.description}</p>
+    <p>Posted by ${user.username}</p>
 </div>
 </body>
 </html>
