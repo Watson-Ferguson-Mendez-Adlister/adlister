@@ -11,10 +11,8 @@
             <li class="nav-item ">
                 <a class="nav-link" href="/">Home </a>
             </li>
-
             <c:choose>
                 <c:when test="${sessionScope['user'] == null}">
-
                     <li class="nav-item">
                         <a class="nav-link" href="/register">Register</a>
                     </li>
@@ -22,8 +20,15 @@
                         <a class="nav-link" href="/login">Login</a>
                     </li>
                 </c:when>
+                <c:when test="${sessionScope['url'] != null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                </c:when>
                 <c:otherwise>
-
                     <li class="nav-item">
                         <a class="nav-link" href="/profile">Profile</a>
                     </li>
@@ -36,9 +41,5 @@
                 </c:otherwise>
             </c:choose>
         </ul>
-        <%--        <form class="form-inline my-2 my-lg-0">--%>
-        <%--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--%>
-        <%--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
-        <%--        </form>--%>
     </div>
 </nav>
