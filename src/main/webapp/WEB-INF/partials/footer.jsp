@@ -1,31 +1,26 @@
-
 <div class="container-fluid footer">
-    <div class="row row-cols-4 m-4">
-        <div class="col text-center h3">Header</div>
-        <div class="col text-center h3">Header</div>
-        <div class="col text-center h3">Header</div>
-        <div class="col text-center h3">Header</div>
+
+    <div class="row row-cols-4 m-4 justify-content-center">
+        <div class="col text-center h3">Contact Us</div>
+        <div class="col text-center h3">Our Newsletter</div>
     </div>
-    <div class="row row-cols-4 m-3">
-        <div class="col text-center">link</div>
-        <div class="col text-center">link</div>
-        <div class="col text-center">link</div>
-        <div class="col text-center">
-            <input type="text" placeholder="Enter your email address">
+    <div class="row row-cols-4 m-3 justify-content-center">
+        <div class="col text-center ">About Us</div>
+        <div class="col text-center ">
+            <input type="text" placeholder="Your email address">
         </div>
 
     </div>
-    <div class="row row-cols-4 m-3">
-        <div class="col text-center">link</div>
-        <div class="col text-center">link</div>
-        <div class="col text-center">link</div>
-        <div class="col text-center">
-            <button class="btn btn-primary">Subscribe</button>
+    <div class="row row-cols-4 row m-3 justify-content-center">
+        <div class="col text-center ">Jobs</div>
+        <div class="col text-center ">
+            <button class="btn btn-primary btn-center">Sign Up</button>
         </div>
+    </div>
     </div>
         <div class="row m-3">
-            <div class="col-12 text-center">copywrite</div>
-        </div>
+            <div class="col-12 text-center">&copy; 2023 StudentMarket.com, Inc. All rights reserved</div>
+
 
 </div>
 
