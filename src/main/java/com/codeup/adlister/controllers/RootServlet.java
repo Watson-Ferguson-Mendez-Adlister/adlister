@@ -10,6 +10,8 @@ import java.io.IOException;
 @WebServlet(name = "RootServlet", urlPatterns = "")
 public class RootServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().setAttribute("url", false);
+
         request.getRequestDispatcher("/index").forward(request, response);
     }
 }

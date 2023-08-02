@@ -26,7 +26,7 @@ public class CreateAdServlet extends HttpServlet {
             return;
         } else {
             Object dispatcher = request.getRequestURL();
-            request.getSession().setAttribute("url", dispatcher);
+            request.getSession().setAttribute("url", true);
         }
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
     }
@@ -39,7 +39,7 @@ public class CreateAdServlet extends HttpServlet {
                 request.getParameter("description"),
                 request.getParameter("category")
         );
-        request.getSession().setAttribute("url", null);
+        request.getSession().setAttribute("url", false);
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/index");
     }

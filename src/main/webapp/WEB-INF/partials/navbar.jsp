@@ -22,7 +22,7 @@
                             <a class="nav-link" href="/login">Login</a>
                         </li>
                     </c:when>
-                    <c:when test="${sessionScope['url'] != null}">
+                    <c:when test="${sessionScope['url'] == true}">
                         <li class="nav-item">
                             <a class="nav-link" href="/profile">Profile</a>
                         </li>

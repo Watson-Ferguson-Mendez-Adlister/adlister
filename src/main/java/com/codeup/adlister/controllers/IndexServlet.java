@@ -13,6 +13,8 @@ import java.util.*;
 @WebServlet(name = "IndexServlet", urlPatterns = "/index")
 public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().setAttribute("url", false);
+
         // Fetch all ads
         List<Ad> ads = DaoFactory.getAdsDao().all();
 
