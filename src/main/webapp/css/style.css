@@ -90,7 +90,7 @@ h5 a {
 }
 
 
-footer {
+.footer {
     font-family: var(--raleway-font);
     background-color: var(--light-blue-color);
     margin-top: auto;
