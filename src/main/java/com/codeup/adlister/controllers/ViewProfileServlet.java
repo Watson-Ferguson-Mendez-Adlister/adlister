@@ -15,6 +15,7 @@ import java.util.List;
 @WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().setAttribute("url", false);
 
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
