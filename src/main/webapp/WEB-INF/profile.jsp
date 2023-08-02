@@ -11,19 +11,19 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
+        <h1 class="pt-5 header-text">Welcome, ${sessionScope.user.username}!</h1>
         <p>Email: ${sessionScope.user.email}</p>
 
-        <div class="d-flex">
+        <div class="d-flex pt-4">
             <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#editProfileModal">Edit Account</button>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProfileModal">Delete Account</button>
         </div>
 
-        <h1 class="py-3">Your Ads</h1>
+        <h1 class="pt-5 pb-3 header-text">Your Ads</h1>
         <c:forEach var="ad" items="${ads}">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">${ad.title}</h5>
+                    <h5 class="card-title header-text">${ad.title}</h5>
                     <p class="card-text">${ad.description}</p>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAdModal${ad.id}">
                         <i class="fas fa-edit"></i> Edit

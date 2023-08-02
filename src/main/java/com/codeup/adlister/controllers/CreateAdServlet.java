@@ -34,9 +34,10 @@ public class CreateAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(
-            loggedInUser.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
+                loggedInUser.getId(),
+                request.getParameter("title"),
+                request.getParameter("description"),
+                request.getParameter("category")
         );
         request.getSession().setAttribute("url", null);
         DaoFactory.getAdsDao().insert(ad);

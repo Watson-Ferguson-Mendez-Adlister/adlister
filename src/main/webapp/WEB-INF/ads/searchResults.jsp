@@ -25,7 +25,7 @@
       <div class="row mt-4">
         <c:forEach var="ad" items="${ads}">
           <div class="col-3">
-            <div class="card mb-4">
+            <div class="card mb-4 index-card">
               <div class="card-body">
                 <h5 class="card-title"><a href="${pageContext.request.contextPath}/ads/${ad.id}">${ad.title}</a></h5>
                 <p class="card-text">${ad.description}</p>
@@ -36,6 +36,7 @@
       </div>
     </c:otherwise>
   </c:choose>
+  <button onclick="window.history.back()" class="btn btn-primary mt-3">Go Back</button>
 </div>
 </body>
 </html>

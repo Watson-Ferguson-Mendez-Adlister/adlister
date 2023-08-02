@@ -17,9 +17,10 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container">
-    <h1 class="pt-5">${ad.title}</h1>
+    <h1 class="pt-5 mb-3 header-text">${ad.title}</h1>
     <p>${ad.description}</p>
-    <p>Posted by ${user.username}</p>
+    <p class="text-muted">Posted by ${user.username}</p>
+    <button onclick="window.history.back()" class="btn btn-primary mt-3">Go Back</button>
 </div>
 </body>
 </html>
