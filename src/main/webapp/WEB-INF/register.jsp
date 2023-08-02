@@ -9,8 +9,8 @@
 <body>
 <jsp:include page="partials/navbar.jsp"/>
 <div class="container">
-    <h1>Please fill in your information.</h1>
-    <form action="/register" method="post">
+    <h1 class="header-text text-center pt-5">Please fill in your information.</h1>
+    <form action="/register" method="post" class="mx-auto w-50">
         <div class="form-group">
             <label for="username">Username</label>
             <input id="username" name="username" class="form-control" type="text"

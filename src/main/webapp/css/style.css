@@ -1,0 +1,97 @@
+:root {
+    --raleway-font: 'Raleway', sans-serif;
+    --primary-button-color: #4574C9;
+    --dark-blue-color: #064a91;
+    --light-blue-color: #E4F2FD;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: var(--raleway-font);
+}
+
+.navbar {
+    border-bottom: .5px solid lightgrey;
+}
+
+.index-body {
+    background-color: #f9f9f9;
+}
+
+.hero-section {
+    background-color: var(--light-blue-color);
+
+}
+
+.divider {
+    height: 2px;
+    background-color: #e9f4fd;
+}
+
+.card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.hero-section h1 {
+    padding-top: 1em;
+    font-size: 64px;
+    font-family: var(--raleway-font);
+    font-weight: 600;
+    background: -webkit-linear-gradient(#002166, #4574C9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2, .nav-link, .nav-item, .header-text {
+    font-family: var(--raleway-font);
+    color: var(--dark-blue-color);
+}
+
+.search-bar {
+    width: 41%;
+    border-radius: 20px;
+    height: 40px;
+    padding-left: 2em;
+}
+
+.login-button {
+    background-color: var(--primary-button-color);
+    border: none;
+}
+
+.index-card {
+    border: var(--dark-blue-color) 1px solid;
+    height: 130px;
+}
+
+.error-message {
+    color: red;
+}
+
+h5 a {
+    color: #064A91;
+}
+
+.horizontal-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--light-blue-color);
+}
+
+.horizontal-scroll:hover {
+    overflow-x: auto;
+}
+
+
+footer {
+    font-family: var(--raleway-font);
+    background-color: var(--light-blue-color);
+    margin-top: auto;
+}
