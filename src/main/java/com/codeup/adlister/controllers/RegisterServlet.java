@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             return;
         } else if (emailHasErrors) {
-            request.setAttribute("emailError", "Email invalid, please enter a new email.");
+            request.setAttribute("emailError", "Email invalid/is already taken, please enter a new email.");
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             return;
         } else if (passHasErrors) {
