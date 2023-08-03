@@ -71,18 +71,20 @@ public class MySQLUsersDao implements Users {
     public void update(User user) {
         try {
             PreparedStatement stmt = connection.prepareStatement(
-                    "UPDATE users SET username = ?, email = ? WHERE id = ?"
+                    "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?"
             );
 
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
-            stmt.setLong(3, user.getId());
+            stmt.setString(3, user.getPassword()); // new line
+            stmt.setLong(4, user.getId()); // change from 3 to 4
 
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error updating user.", e);
         }
     }
+
 
     @Override
     public void delete(User user) {
