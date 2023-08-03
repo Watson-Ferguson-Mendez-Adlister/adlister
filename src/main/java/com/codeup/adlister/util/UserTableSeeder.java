@@ -18,9 +18,9 @@ public class UserTableSeeder {
 
     public static void seedUsersTable() {
         // Sample user data
-        String[] usernames = { "john_doe", "jane_smith", "alex123" };
-        String[] emails = { "john.doe@example.com", "jane.smith@example.com", "alex@example.com" };
-        String[] passwords = { "pass123", "secret456", "qwerty789" };
+        String[] usernames = { "john_doe", "jane_smith", "alex123", "brenden1", "tiffani1", "robert1" };
+        String[] emails = { "john.doe@example.com", "jane.smith@example.com", "alex@example.com", "brenden@codeup.com", "tiffani@codeup.com", "robert@codeup.com"};
+        String[] passwords = { "pass123", "secret456", "qwerty789", "pass", "pass", "pass" };
 
         String insertQuery = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
 

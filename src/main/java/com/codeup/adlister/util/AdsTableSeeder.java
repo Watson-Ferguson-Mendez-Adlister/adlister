@@ -17,14 +17,17 @@ public class AdsTableSeeder {
 
     public static void seedAdsTable() {
         // Sample ad data
-        String[] titles = { "Car for Sale", "Apartment for Rent", "Job Opportunity" };
+        String[] titles = { "Car for Sale", "Apartment for Rent", "Job Opportunity", "FREE", "Calculators", "Tutoring" };
         String[] descriptions = {
                 "Selling a well-maintained used car. Contact for more details.",
                 "Spacious apartment available for rent. Great location!",
-                "We are hiring software developers. Apply now!"
+                "We are hiring software developers. Apply now!",
+                "Graduation Sale, everything is free, must pick up!",
+                "Large Collection of Second-Hand Calculators for Sale.",
+                "Tutoring in Math, $200/hr."
         };
-        String[] categories = { "forSale", "housing", "jobs" };
-        long[] userIds = { 1L, 2L, 3L }; // Assuming user IDs exist in the 'users' table
+        String[] categories = { "forSale", "housing", "jobs", "forSale", "forSale", "services" };
+        long[] userIds = { 1L, 2L, 3L, 4L, 5L, 6L }; // Assuming user IDs exist in the 'users' table
 
         String insertQuery = "INSERT INTO ads (user_id, title, description, category) VALUES (?, ?, ?, ?)";
 
