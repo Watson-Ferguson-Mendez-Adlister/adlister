@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/////User Seeder/////
+
 public class UserTableSeeder {
 
     // Database credentials and connection information

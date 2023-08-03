@@ -4,19 +4,14 @@ import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import com.codeup.adlister.util.Validation;
-import org.mindrot.jbcrypt.BCrypt;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import static java.lang.System.currentTimeMillis;
-import static java.lang.System.out;
-
+/////Register Servlet/////
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +25,7 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        //Sets attributes to be used for Sticky Forms
         String username = request.getParameter("username");
         request.getSession().setAttribute("prevUsername", username);
         String email = request.getParameter("email");
@@ -37,21 +33,20 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String passwordConfirmation = request.getParameter("confirm_password");
 
-        // validate input
+        // validate input before storage into the Database
         boolean userHasErrors = username.isEmpty() || (!Validation.isValidUsername(username));
         boolean userExists = DaoFactory.getUsersDao().findByUsername(username) != null;
-
-        boolean passHasErrors = password.isEmpty()
-                || (!password.equals(passwordConfirmation));
-
+        boolean passHasErrors = password.isEmpty() || (!password.equals(passwordConfirmation));
         boolean emailHasErrors = email.isEmpty() || !Validation.isValidEmail(email) || DaoFactory.getUsersDao().findByEmail(email) != null;
 
+        //Sets attributes for error messages
         if (userHasErrors) {
             request.setAttribute("userError", "Username invalid, please try again.");
         } else if (userExists) {
             request.setAttribute("userError", "Username already exists.");
         }
 
+        //Sends attributes if there is an error
         if (userHasErrors || userExists) {
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             return;

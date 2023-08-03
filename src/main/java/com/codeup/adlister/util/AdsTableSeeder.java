@@ -4,6 +4,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/////Ad Seeder/////
+
 public class AdsTableSeeder {
 
     // Database credentials and connection information

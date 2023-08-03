@@ -2,6 +2,8 @@ package com.codeup.adlister.util;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+/////Password Hashing/////
+
 public class Password {
     private static final int ROUNDS = 12;
 
