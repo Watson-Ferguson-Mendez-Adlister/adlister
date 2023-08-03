@@ -9,7 +9,6 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
     <div class="container">
         <h1 class="pt-5 header-text">Welcome, ${sessionScope.user.username}!</h1>
         <p>Email: ${sessionScope.user.email}</p>
@@ -112,6 +111,10 @@
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email" class="form-control" value="${sessionScope.user.email}">
                         </div>
+                        <div class="form-group">
+                            <label for="password">New Password:</label>
+                            <input type="password" id="password" name="password" class="form-control">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -121,6 +124,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Delete Profile Modal -->
     <div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
