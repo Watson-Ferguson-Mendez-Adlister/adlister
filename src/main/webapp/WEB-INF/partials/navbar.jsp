@@ -19,7 +19,7 @@
                             <a class="nav-link" href="/register">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
+                            <a class="nav-link btn btn-primary text-white login-button login-button-length" href="/login">Login</a>
                         </li>
                     </c:when>
                     <c:when test="${sessionScope['url'] == true}">
@@ -38,7 +38,7 @@
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ads/create">Create A Post</a>
+                            <a class="nav-link btn btn-primary text-white login-button" href="/ads/create">Create a Post</a>
                         </li>
                     </c:otherwise>
                 </c:choose>

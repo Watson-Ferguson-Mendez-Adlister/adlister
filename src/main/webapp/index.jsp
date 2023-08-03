@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Adlister"/>
+        <jsp:param name="title" value="Student Market"/>
     </jsp:include>
 </head>
 <body>

@@ -64,6 +64,10 @@ h2, .nav-link, .nav-item, .header-text {
     border: none;
 }
 
+.login-button-length {
+    width: 6rem;
+}
+
 .index-card {
     border: var(--dark-blue-color) 1px solid;
     height: 130px;
@@ -89,6 +93,16 @@ h5 a {
     overflow-x: auto;
 }
 
+.footer-search {
+    border-radius: 8px;
+    padding-left: 10px;
+    border: none;
+    height: 35px;
+}
+
+.footer-search::placeholder {
+    padding-left: 10px;
+}
 
 .footer {
     font-family: var(--raleway-font);

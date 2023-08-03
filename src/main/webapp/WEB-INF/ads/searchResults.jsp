@@ -36,7 +36,8 @@
       </div>
     </c:otherwise>
   </c:choose>
-  <button onclick="window.history.back()" class="btn btn-primary mt-3">Go Back</button>
+  <button onclick="window.history.back()" class="btn btn-primary mt-3 mb-5">Go Back</button>
 </div>
+<jsp:include page="/WEB-INF/partials/footer.jsp"/>
 </body>
 </html>
