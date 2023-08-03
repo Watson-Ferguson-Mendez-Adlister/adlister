@@ -13,13 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/////Servlet for Logging in/////
+
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Redirects to Home page if already Logged in
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/index");
             return;
         }
+        //If-Statement for Sticky Forms so that the user-input box will be empty instead of saying Null
         if(request.getSession().getAttribute("prevUser") == null){
             request.getSession().setAttribute("prevUser", "");
         }
@@ -27,11 +31,14 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        //Saves input for Sticky Forms
         String username = request.getParameter("username");
         request.getSession().setAttribute("prevUser", username);
         String password = request.getParameter("password");
         User user = DaoFactory.getUsersDao().findByUsername(username);
         boolean validAttempt = false;
+
+        //Checks the inputted password to see if it matches the hashed version in the database
 
         if(user != null){
             validAttempt = Password.check(password, user.getPassword());

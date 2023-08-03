@@ -4,6 +4,8 @@ import com.codeup.adlister.models.Ad;
 
 import java.util.List;
 
+/////Ads Interface/////
+
 public interface Ads {
     // get a list of all the ads
     List<Ad> all();

@@ -4,6 +4,8 @@ import com.codeup.adlister.models.User;
 
 import java.util.List;
 
+/////User Interface/////
+
 public interface Users {
     User findByUsername(String username);
     User findByEmail(String email);

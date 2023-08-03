@@ -3,6 +3,8 @@ package com.codeup.adlister.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/////Regex for input Validation/////
+
 public class Validation {
     public static boolean isValidUsername(String name)
     {

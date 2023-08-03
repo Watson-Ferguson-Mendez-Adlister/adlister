@@ -37,10 +37,6 @@ public class Ad {
         return userId;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -59,10 +55,6 @@ public class Ad {
 
     public String getCategory() {
         return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
 }

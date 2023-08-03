@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/////Ads Dao/////
+
 public class MySQLAdsDao implements Ads {
     private Connection connection = null;
 
