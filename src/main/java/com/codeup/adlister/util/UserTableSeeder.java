@@ -32,7 +32,7 @@ public class UserTableSeeder {
             for (int i = 0; i < usernames.length; i++) {
                 preparedStatement.setString(1, usernames[i]);
                 preparedStatement.setString(2, emails[i]);
-                preparedStatement.setString(3, passwords[i]);
+                preparedStatement.setString(3, Password.hash(passwords[i]));
                 preparedStatement.executeUpdate();
             }
 
