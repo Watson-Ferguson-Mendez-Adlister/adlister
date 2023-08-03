@@ -22,5 +22,6 @@
     <p class="text-muted">Posted by ${user.username}</p>
     <button onclick="window.history.back()" class="btn btn-primary mt-3">Go Back</button>
 </div>
+<jsp:include page="/WEB-INF/partials/footer.jsp"/>
 </body>
 </html>

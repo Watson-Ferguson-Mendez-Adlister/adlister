@@ -20,7 +20,9 @@
                 <input id="password" name="password" class="form-control" type="password">
             </div>
             <c:if test="${not empty requestScope.loginError}">
-                <p class="error-message">${requestScope.loginError}</p>
+            <div class="alert alert-danger mt-2" role="alert">
+                    ${requestScope.loginError}
+            </div>
             </c:if>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>

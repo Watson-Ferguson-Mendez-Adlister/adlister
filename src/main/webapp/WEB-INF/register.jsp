@@ -16,7 +16,9 @@
             <input id="username" name="username" class="form-control" type="text"
                    value="<%=request.getSession().getAttribute("prevUsername")%>">
             <c:if test="${not empty requestScope.userError}">
-                <p class="error-message">${requestScope.userError}</p>
+                <div class="alert alert-danger mt-2" role="alert">
+                        ${requestScope.userError}
+                </div>
             </c:if>
         </div>
         <div class="form-group">
@@ -24,7 +26,9 @@
             <input id="email" name="email" class="form-control" type="text"
                    value="<%=request.getSession().getAttribute("prevEmail")%>">
             <c:if test="${not empty requestScope.emailError}">
-                <p class="error-message">${requestScope.emailError}</p>
+                <div class="alert alert-danger mt-2" role="alert">
+                        ${requestScope.emailError}
+                </div>
             </c:if>
         </div>
         <div class="form-group">
@@ -36,10 +40,12 @@
             <label for="confirm_password">Confirm Password</label>
             <input id="confirm_password" name="confirm_password" class="form-control" type="password">
             <c:if test="${not empty requestScope.passError}">
-                <p class="error-message">${requestScope.passError}</p>
+                <div class="alert alert-danger mt-2" role="alert">
+                        ${requestScope.passError}
+                </div>
             </c:if>
         </div>
-        <input type="submit" class="btn btn-primary btn-block">
+        <input type="submit" class="btn btn-primary btn-block mb-5">
     </form>
 </div>
 </body>

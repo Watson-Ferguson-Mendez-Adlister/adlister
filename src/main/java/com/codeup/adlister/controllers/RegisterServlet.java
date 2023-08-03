@@ -38,20 +38,21 @@ public class RegisterServlet extends HttpServlet {
         String passwordConfirmation = request.getParameter("confirm_password");
 
         // validate input
-        boolean userHasErrors = username.isEmpty()
-                || DaoFactory.getUsersDao().findByUsername(username) != null
-                || (!Validation.isValidUsername(username));
+        boolean userHasErrors = username.isEmpty() || (!Validation.isValidUsername(username));
+        boolean userExists = DaoFactory.getUsersDao().findByUsername(username) != null;
 
         boolean passHasErrors = password.isEmpty()
                 || (!password.equals(passwordConfirmation));
 
-        out.println("userHasErrors = " + userHasErrors);
-        boolean emailHasErrors = email.isEmpty() || DaoFactory.getUsersDao().findByEmail(email) != null;
-
-        //Error Messages
+        boolean emailHasErrors = email.isEmpty() || !Validation.isValidEmail(email) || DaoFactory.getUsersDao().findByEmail(email) != null;
 
         if (userHasErrors) {
             request.setAttribute("userError", "Username invalid, please try again.");
+        } else if (userExists) {
+            request.setAttribute("userError", "Username already exists.");
+        }
+
+        if (userHasErrors || userExists) {
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             return;
         } else if (emailHasErrors) {
